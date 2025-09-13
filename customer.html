@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" href="customerstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header" style="top: 0;">
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="Images/FrontEndPictures/logo.webp" alt="Auto Repair Shop Logo" class="logo">
+                <h2>Customer Dashboard</h2>
+            </div>
+            <div class="user-info">
+                <span class="welcome-msg">Welcome, <span id="username">Customer</span></span>
+                <div class="user-dropdown">
+                    <img src="Images/FrontEndPictures/admin.jpg" alt="Admin Profile Picture" class="admin-picture">
+                    <div class="dropdown-content">
+                        <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+<div class="sidebar" aria-label="Customer Dashboard Sidebar">
+  <ul class="sidebar-menu">
+    <li><a href="#appointments" class="nav-link" aria-label="Appointments" data-section="appointments"><i class="fas fa-calendar-check"></i> Appointments</a></li>
+    <li><a href="#vehicleInfo" class="nav-link" aria-label="Vehicle Information" data-section="vehicleInfo"><i class="fas fa-car"></i> Vehicles</a></li>
+    <li><a href="#repairTracking" class="nav-link" aria-label="Repair Tracking" data-section="repairTracking"><i class="fas fa-tools"></i> Repairs</a></li>
+    <li><a href="#buyProducts" class="nav-link" aria-label="Purchasing Product" data-section="buyProducts"><i class="fa-solid fa-shop"></i>Products</a></li>
+    <li><a href="#invoicing" class="nav-link" aria-label="Invoicing" data-section="invoicing"><i class="fas fa-file-invoice"></i> Invoices</a></li>
+    <li><a href="#profileManagement" class="nav-link" aria-label="Profile Management" data-section="profileManagement"><i class="fas fa-user-cog"></i> Profile</a></li>
+  </ul>
+</div>
+
+<!--Main Content-->
+<main class="main-content">
+    <!-- Appointments Section -->
+     <section id="appointments" class="content-section">
+        <div class="appointment-header">
+            <h2>Appointments</h2>
+            <p>Managed your appointments here.</p>
+            <button id="addAppointmentBtn" class="btn">Add Appointment</button>
+        </div>
+        <!-- Appointment Table -->
+        <div id="appointmentTableContainer" style="margin-top: 20px; display: none;">
+            <table id="appointmentTable" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Date</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Time</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Vehicle Details</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Service Type</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="appointmentTableBody">
+                    <!-- Rows will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+     </section>
+
+     <!--Vehicle Info Section-->
+     <section id="vehicleInfo" class="content-section">
+        <div class="vehicle-header">
+            <h2>Vehicle Information</h2>
+            <p>Your vehicle information is here.</p>
+            <button id="addVehicleBtn" class="btn">Add Vehicle</button>
+        </div>
+        <!-- Vehicle Table -->
+        <div id="vehicleTableContainer" style="margin-top: 20px; display: none;">
+            <table id="vehicleTable" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Vehicle ID</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Make</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Model</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Year</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">VIN</th>
+                    </tr>
+                </thead>
+                <tbody id="vehicleTableBody">
+                    <!-- Rows will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+     </section>
+
+        <!-- Repair Tracking Section -->
+    <section id="repairTracking" class="content-section">
+        <div class="repair-header">
+            <h2>Repair Tracking</h2>
+            <p>Your repair tracking information is here.</p>
+        </div>
+        <!-- Repair Table -->
+         <div id="repairTableContainer" style="margin-top: 20px;">
+            <table id="repairTable" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Repair ID</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Vehicle ID</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Service Type</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="repairTableBody">
+                    <!-- Rows will be dynamically added here -->
+                </tbody>
+            </table>
+         </div>
+    </section>
+
+    <!-- Purchasing Product Section -->
+     <section id="buyProducts" class="content-section">
+        <div class="product-header">
+            <h2>Purchasing Product</h2>
+            <p>Your product purchasing information is here.</p>
+            <button id="addProductBtn" class="btn">Buy Product</button>
+        </div>
+        <!-- Product Table -->
+         <div id="productTableContainer" style="margin-top: 20px;">
+            <table id="productTable" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Product ID</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Product Name</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Price</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Quantity</th>
+                    </tr>
+                </thead>
+                <tbody id="productTableBody">
+                    <!-- Rows will be dynamically added here -->
+                </tbody>
+            </table>
+         </div>
+    </section>
+
+    <!-- Invoicing Section -->
+     <section id="invoicing" class="content-section">
+        <div class="invoice-header">
+            <h2>Invoicing</h2>
+            <p>Your invoicing information is here.</p>
+            <button type="button" id="downloadReceiptBtn" class="btn" onclick="openReceiptModal()">Download Receipt</button>
+        </div>
+        <!-- Invoice Table -->
+         <div id="invoiceTableContainer" style="margin-top: 20px;">
+            <table id="invoiceTable" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr>
+                        <th style="border: 1px solid #ccc; padding: 8px;">InvoiceID</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">CustomerID</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Service Type</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Purchased Product</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Total Amount</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Payment Method</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Date</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Time</th>
+                        <th style="border: 1px solid #ccc; padding: 8px;">Status</th>
+
+                    </tr>
+                </thead>
+                <tbody id="invoiceTableBody">
+                    <!-- Rows will be dynamically added here -->
+                </tbody>
+            </table>
+         </div>
+    </section>
+
+    <!-- Profile Section-->
+     <section id="profileManagement" class="content-section">
+        <div class="profile-header">
+            <h2>Profile Management</h2>
+            <p>Update your profile information and change your password here.</p>
+            <button id="updateProfileBtn" class="btn" onclick="openProfileModal()">Update Profile</button>
+        </div>
+     </section>
+</main>
+
+<!-- Appointment Modal -->
+<div id="appointmentModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span id="closeModalBtn" class="close-btn">&times;</span>
+        <h2>New Appointment</h2>
+        <form id="appointmentForm">
+            <label for="appointmentDate">Date:</label>
+            <input type="date" id="appointmentDate" name="appointmentDate" required>
+            
+            <label for="appointmentTime">Time:</label>
+            <input type="time" id="appointmentTime" name="appointmentTime" required>
+            
+            <label for="vehicleDetails">Vehicle Details:</label>
+            <input type="text" id="vehicleDetails" name="vehicleDetails" placeholder="Enter vehicle details" required>
+            
+            <label for="serviceType">Service Type:</label>
+            <select id="serviceType" name="serviceType" required>
+                <option value="servicetype">Select Service Type</option>
+                <option value="changeOil">Change Oil</option>
+                <option value="overhaul">Overhaul</option>
+                <option value="wiring">Wiring</option>
+                <option value="decals">Decals</option>
+                <option value="reset">Reset</option>
+                <option value="retune">Re-tune</option>
+                <option value="tireChange">Tire Change</option>
+                <option value="cvtCleaning">CVT Cleaning</option>
+                <option value="headworks">Headworks</option>
+                <option value="rebuild">Rebuild</option>
+                <option value="speedShop">Speed Shop</option>
+                <option value="suspensionRepack">Suspension Repack</option>
+                <option value="repaint">Repaint</option>
+                <option value="boreUpgrade">Bore Upgrade</option>
+                <option value="brakeRepair">Brake Repair</option>
+                <option value="transmissionRepair">Transmission Repair</option>
+                <option value="batteryReplacement">Battery Replacement</option>
+            </select>
+            
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+</div>
+
+<!-- Vehicle Modal -->
+ <div id="vehicleModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span id="closeVehicleModalBtn" class="close-btn">&times;</span>
+        <h2>Add Vehicle</h2>
+        <form id="vehicleForm">
+            <label for="vehicleMake">Make:</label>
+            <input type="text" id="vehicleMake" name="vehicleMake" required>
+            
+            <label for="vehicleModel">Model:</label>
+            <input type="text" id="vehicleModel" name="vehicleModel" required>
+            
+            <label for="vehicleYear">Year:</label>
+            <input type="number" id="vehicleYear" name="vehicleYear" required>
+            
+            <label for="vehicleVIN">VIN:</label>
+            <input type="text" id="vehicleVIN" name="vehicleVIN" required>
+            
+            <button type="submit" class="btn">Add Vehicle</button>
+        </form>
+    </div>
+ </div>
+
+ <!--Product Modal -->
+    <div id="productModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span id="closeProductModalBtn" class="close-btn">&times;</span>
+            <h2>Buy Product</h2>
+            <form id="productForm">
+                <label for="productDropdown">Select Product:</label>
+                <select id="productDropdown" name="productDropdown" onchange="updateProductPrice()" required>
+                    <option value="" disabled selected>Select a product</option>
+                    <!-- Options will be dynamically populated -->
+                     <option value="engineOil">Engine Oil</option>
+                     <option value="tire">Tire</option>
+                     <option value="brakeFluid">Brake Fluid</option>
+                </select>
+                
+                <label for="productPrice">Price:</label>
+                <input type="number" id="productPrice" name="productPrice" readonly>
+                
+                <label for="productQuantity">Quantity:</label>
+                <input type="number" id="productQuantity" name="productQuantity" required>
+                
+                <label for="paymentMethod">Payment Method:</label>
+                <select id="paymentMethod" name="paymentMethod" required>
+                    <option value="" disabled selected>Select Payment Method</option>
+                    <option value="creditCard">Credit Card</option>
+                    <option value="debitCard">Debit Card</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="cash">Cash</option>
+                </select>
+                
+                <button type="submit" class="btn">Confirm Purchase</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Download Receipt Modal -->
+    <div id="receiptModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span id="closeReceiptModalBtn" class="close-btn">&times;</span>
+            <h2>Receipt Downloaded</h2>
+            <p>Your receipt was successfully downloaded. Click "View Receipt" now to view your receipt.</p>
+            <button id="viewReceiptBtn" class="btn">View Receipt</button>
+        </div>
+    </div>
+
+    <!-- Logout Modal -->
+    <div id="logoutModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Logout Successful</h2>
+            <p>You have successfully logged out. Redirecting to the home page...</p>
+        </div>
+    </div>
+
+    <!-- Profile Management Modal -->
+    <div id="profileModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span id="closeProfileModalBtn" class="close-btn">&times;</span>
+            <h2>Update Profile</h2>
+                <form id="profileManagementForm">
+                    <label for="profileUsername">Username:</label>
+                    <input type="text" id="profileUsername" name="profileUsername" required>
+                    
+                    <label for="profileEmail">Email:</label>
+                    <input type="email" id="profileEmail" name="profileEmail" required>
+                    
+                    <label for="profilePhone">Phone:</label>
+                    <input type="tel" id="profilePhone" name="profilePhone" required>
+                    
+                    <label for="currentPassword">Current Password:</label>
+                    <input type="password" id="currentPassword" name="currentPassword" required>
+                    
+                    <label for="newPassword">New Password:</label>
+                    <input type="password" id="newPassword" name="newPassword" required>
+                    
+                    <label for="confirmNewPassword">Confirm New Password:</label>
+                    <input type="password" id="confirmNewPassword" name="confirmNewPassword" required>
+                    
+                    <button type="submit" class="btn">Update Profile</button>
+                </form>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="copyright">
+            <p>&copy; <span id="current-year">2025</span> Auto Repair Shop | All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="customer.js"></script>
+    <script src="customer-appointments.js"></script>
+    <script src="receipt-generator.js"></script>
+</body>
+</html>
