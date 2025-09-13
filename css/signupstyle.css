@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.signup-header {
+    background-color:#addd77;
+    color: black;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.signup-header .logo-container {
+    margin-left: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.signup-header .logo-container img {
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+.signup-header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin-right: 2rem;
+}
+
+.signup-header nav ul li {
+    position: relative;
+}
+
+.signup-header nav ul li::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #333;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s;
+}
+
+.signup-header nav ul li:hover::after {
+    width: 100%;
+}
+
+.signup-header nav a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.signup-header nav a:hover {
+    color: #f4c20d;
+}
+
+
+.signup-container {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 800px;
+    margin: 100px auto 40px;
+    flex: 1;
+}
+
+.form-columns {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.form-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-container textarea {
+    min-height: 80px;
+}
+
+.signup-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.signup-container label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.signup-container input,
+.signup-container select,
+.signup-container textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.signup-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.signup-container button:hover {
+    background-color: #555;
+}
+
+.signup-container p {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.signup-container a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-container a:hover {
+    text-decoration: underline;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #495057;
+}
+
+
+.footer-bottom {
+    background-color: #addd77;
+    text-align: center;
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid #444;
+    justify-content: center;
+    align-items: center;
+}
+ .footer-bottom p {
+    margin: 0;
+    color: #333;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed relative to the viewport */
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    display: flex; /* Use flexbox for centering */
+}
+
+.modal-content {
+    background-color: beige;
+    padding: 30px;
+    border: 1px solid black;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative; /* Ensure proper positioning of content */
+    animation: fadeIn 0.3s ease-in-out; /* Add fade-in animation */
+}
+
+/* Fade-in animation for modal */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
